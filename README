@@ -4,14 +4,12 @@ jsaUnit - Asynchronous JavaScript Unit Test Module
  
 == Description
 
- Asynchronous JavaScript UNIT testing can be a pain in the ass, so I wrote this little module to make it a bit easier to handle. The 
- jsaUnit module allows you to:
+ Asynchronous JavaScript UNIT testing can be a pain in the ass, so I wrote this little module to make it a bit easier to handle. The jsaUnit module allows you to:
     1. Provide a list of asynchronous functions to execute, and register the arguments provided by each async callback
     2. Receive notification once all callbacks are complete - in order to kick-off the UNIT tests/test runner
     3. For each async function retrieve the callback arguments, which are in turn passed to a function containing your assertions
  
- See the usage examples below. I provided examples using two different UNIT test frameworks (JSUNIT and FireUnit). Also, I have provided
- jsdoc documentation, which you can find under the predictably named "jsdoc" directory.
+ See the usage examples below. I provided examples using two different UNIT test frameworks (JSUNIT and FireUnit). Also, I have provided jsdoc documentation, which you can find under the predictably named "jsdoc" directory.
  
  
 == Code
@@ -24,6 +22,8 @@ jsaUnit - Asynchronous JavaScript Unit Test Module
  
  
 == Usage
+ 
+  In addition to the usage examples below you can look at the demo.html I have included in the project. 
  
   /* An example using JSUNIT */
 
@@ -108,6 +108,9 @@ jsaUnit - Asynchronous JavaScript Unit Test Module
      jsaUnit.test("testShouldDoYetAnotherThing", function(xmlHttp, textStatus) {
         //assertions...
      });
+
+     //tests are done!!
+     fireunit.testDone();
      
   }
 

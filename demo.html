@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Demo of jsaUnit using FireUnit</title>
+		<script type="text/javascript" src="jsaUnit.js"></script>
+		<script type="text/javascript">
+			
+			var newTestObject = function () {
+				var _instance, _message;
+				
+				_instance = {
+					message: function (message) {
+						_message = message;
+						return _instance;
+					},
+					call: function (fn) {
+						setTimeout(function () {
+							fn.apply(null, [_message]);
+						}, 100);
+					}
+				};
+				return _instance;
+			};
+			
+			
+			jsaUnit.run(
+				function() {
+					newTestObject()
+						.message("A message to you...")
+						.call(function () {
+							jsaUnit.callback("testShouldProvideMessage", arguments);
+						});
+				},
+				function() {
+					newTestObject()
+						.message("and to you...")
+						.call(function () {
+							jsaUnit.callback("testShouldProvideTheOtherMessage", arguments);
+						});
+				})
+				.whenDone(function () {
+					runTests();
+				});
+			
+			
+			function runTests() {
+				jsaUnit.test("testShouldProvideMessage", function(message) {
+					fireunit.compare("A message to you...", message, "My first message comparison");
+				});
+				
+				
+				jsaUnit.test("testShouldProvideTheOtherMessage", function(message) {
+					fireunit.compare("and to you...", message, "My other message comparison");
+				});
+				
+				//tests are done!!
+				fireunit.testDone();
+			}
+		</script>
+	</head>
+	<body>
+		<p>Demo of jsaUnit using FireUnit, open the Firebug console to see the results...</p>
+		<br /><br />
+	</body>
+</html>
