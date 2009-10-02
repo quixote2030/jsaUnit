@@ -4,7 +4,7 @@
 
  * Copyright (c) 2009 Christopher Byrum
  * Released under the MIT license
- * http://github.com/quixote2030/jsaUnit/blob/master/LICENSE
+ * http://github.com/quixote2030/jsaUnit/blob/master/LICENSE.txt
  */
 
 /** 
